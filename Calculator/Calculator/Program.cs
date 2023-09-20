@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using System.Linq;
+using System.Runtime.ExceptionServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,8 +16,98 @@ namespace Calculator
 {
     internal class Program
     {
+
+        static int Plus(int x, int y) {
+            int res = x + y;    
+            return res;
+            
+        }
+        static int Minus(int x, int y)
+        {
+
+            return x - y;
+        }
+        static int Krat(int x, int y)
+        {
+
+            return x * y;
+        }
+        static double Deleno(double x, double y)
+        {
+            double res;
+            res = x / y;
+            return res;
+        }
+        
+        
         static void Main(string[] args)
         {
+            int res = 0;
+            string a, b;
+            string z;
+            int o = 4;
+            int q=0,w=0,e=0;
+            
+            string[] kontrola1 = {"0","1","2","4","5","6","7","8","9"};
+            char[] kontrola2 = { '+', '-', '*', '/' };
+            bool read = true;
+            while (read)
+            {
+                Console.WriteLine("Zadejte prvni cislo: ");
+                a = Console.ReadLine();
+                bool isNumber = double.TryParse(a, out double result);
+                while (!isNumber)
+                {
+                    Console.WriteLine("Prosim zadejte CISLO:");
+                    a = Console.ReadLine();
+                    isNumber = double.TryParse(a, out result);
+
+                }
+                Console.WriteLine("Zadejte druhe cislo: ");
+                b = Console.ReadLine();
+                bool isNumber1 = double.TryParse(a, out double result1);
+
+                while (!isNumber1)
+                {
+                    Console.WriteLine("Prosim zadejte CISLO:");
+                    b = Console.ReadLine();
+                    isNumber1 = double.TryParse(a, out result1);
+
+                }
+                Console.WriteLine("Zadejte znak operace: ");
+                z = Console.ReadLine();
+                bool isZnak = char.TryParse(a, out char result2);
+
+                while (!isZnak)
+                {
+                    Console.WriteLine("Prosim zadejte ZNAK:");
+                    z = Console.ReadLine();
+                    isZnak = char.TryParse(a, out result2);
+                }
+
+                switch (Convert.ToChar(z))
+                {
+                    case '+':
+                        Console.WriteLine(Plus(Convert.ToInt32(a), Convert.ToInt32(b)));
+                        
+                        break;
+                    case '-':
+                        Console.WriteLine(Minus(Convert.ToInt32(a), Convert.ToInt32(b)));
+                        break;
+                    case '*':
+                        Console.WriteLine(Krat(Convert.ToInt32(a), Convert.ToInt32(b)));
+                        break;
+                    case '/':
+                        Console.WriteLine(Deleno(Convert.ToDouble(a), Convert.ToDouble(b)));
+                        break;
+                }
+
+
+
+            }
+            Console.ReadKey();
+        }
+
             /*
              * Pokud se budes chtit na neco zeptat a zrovna budu pomahat jinde, zkus se zeptat ChatGPT ;) - https://chat.openai.com/
              * 
@@ -39,7 +132,7 @@ namespace Calculator
 
             //Tento komentar smaz a misto nej zacni psat svuj prdacky kod.
 
-            Console.ReadKey(); //Toto nech jako posledni radek, aby se program neukoncil ihned, ale cekal na stisk klavesy od uzivatele.
+             //Toto nech jako posledni radek, aby se program neukoncil ihned, ale cekal na stisk klavesy od uzivatele.
         }
     }
-}
+
