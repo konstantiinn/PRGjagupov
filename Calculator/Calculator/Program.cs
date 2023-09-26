@@ -17,17 +17,17 @@ namespace Calculator
     internal class Program
     {
 
-        static int Plus(int x, int y) {
-            int res = x + y;    
+        static double Plus(double x, double y) {
+            double res = x + y;    
             return res;
             
         }
-        static int Minus(int x, int y)
+        static double Minus(double x, double y)
         {
 
             return x - y;
         }
-        static int Krat(int x, int y)
+        static double Krat(double x, double y)
         {
 
             return x * y;
@@ -88,20 +88,24 @@ namespace Calculator
                 switch (Convert.ToChar(z))
                 {
                     case '+':
-                        Console.WriteLine(Plus(Convert.ToInt32(a), Convert.ToInt32(b)));
+                        Console.WriteLine("Výsledek je: ");
+                        Console.WriteLine(Plus(Convert.ToDouble(a), Convert.ToDouble(b)));
                         
                         break;
                     case '-':
-                        Console.WriteLine(Minus(Convert.ToInt32(a), Convert.ToInt32(b)));
+                        Console.WriteLine("Výsledek je: ");
+                        Console.WriteLine(Minus(Convert.ToDouble(a), Convert.ToDouble(b)));
                         break;
                     case '*':
-                        Console.WriteLine(Krat(Convert.ToInt32(a), Convert.ToInt32(b)));
+                        Console.WriteLine("Výsledek je: ");
+                        Console.WriteLine(Krat(Convert.ToDouble(a), Convert.ToDouble(b)));
                         break;
                     case '/':
+                        Console.WriteLine("Výsledek je: ");
                         Console.WriteLine(Deleno(Convert.ToDouble(a), Convert.ToDouble(b)));
                         break;
                 }
-
+                
 
 
             }
